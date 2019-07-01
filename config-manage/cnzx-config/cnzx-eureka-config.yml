@@ -1,0 +1,39 @@
+spring: 
+  profiles: 
+    active: 
+    - dev
+---
+server: 
+  port: 8021
+   
+spring: 
+  profiles: dev
+  application:
+    name: cnzx-eureka-config
+    
+eureka: 
+  instance: 
+    hostname: cnzx-eureka
+  client: 
+    register-with-eureka: false 
+    fetch-registry: false
+    service-url: 
+      defaultZone: http://cnzx-eureka:8021/eureka/
+
+---
+server: 
+  port: 9021
+   
+spring: 
+  profiles: test
+  application:
+    name: cnzx-eureka-config
+    
+eureka: 
+  instance: 
+    hostname: cnzx-eureka
+  client: 
+    register-with-eureka: false 
+    fetch-registry: false
+    service-url: 
+      defaultZone: http://cnzx-eureka:9021/eureka/

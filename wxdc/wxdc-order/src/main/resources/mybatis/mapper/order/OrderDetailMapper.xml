@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnzx.mapper.order.OrderDetailMapper">
+    <resultMap id="resultMap" type="com.cnzx.entities.order.OrderDetail">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="orderNum" jdbcType="VARCHAR" property="orderNum" />
+        <result column="productCode" jdbcType="VARCHAR" property="productCode" />
+        <result column="productName" jdbcType="VARCHAR" property="productName" />
+        <result column="productPrice" jdbcType="DECIMAL" property="productPrice" />
+        <result column="productCounts" jdbcType="INTEGER" property="productCounts" />
+        <result column="productIcon" jdbcType="VARCHAR" property="productIcon" />
+        <result column="creator" jdbcType="VARCHAR" property="creator" />
+        <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="updator" jdbcType="VARCHAR" property="updator" />
+        <result column="updateTime" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+
+    <insert id="saveOrderDetail" parameterType="java.util.List">
+        insert into order_detail (
+          id,
+          orderNum,
+          productCode,
+          productName,
+          productPrice,
+          productCounts,
+          productIcon,
+          creator,
+          createTime
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.id,jdbcType=VARCHAR},
+            #{item.orderNum,jdbcType=VARCHAR},
+            #{item.productCode,jdbcType=VARCHAR},
+            #{item.productName,jdbcType=VARCHAR},
+            #{item.productPrice,jdbcType=DECIMAL},
+            #{item.productCounts,jdbcType=INTEGER},
+            #{item.productIcon,jdbcType=VARCHAR},
+            #{item.creator,jdbcType=VARCHAR},
+            #{item.createTime,jdbcType=DATE}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

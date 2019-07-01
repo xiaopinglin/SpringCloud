@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.cnzx.config.DemoConfig",
+      "name": "demo",
+      "type": "com.cnzx.config.DemoConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.cnzx.config.DemoConfig",
+      "name": "demo.age",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.cnzx.config.DemoConfig",
+      "name": "demo.name",
+      "type": "java.lang.String"
+    }
+  ]
+}

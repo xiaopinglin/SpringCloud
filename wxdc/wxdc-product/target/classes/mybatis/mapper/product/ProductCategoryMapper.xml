@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnzx.mapper.product.ProductCategoryMapper">
+    <resultMap id="resultMap" type="com.cnzx.entities.product.ProductCategory">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="categoryCode" jdbcType="VARCHAR" property="categoryCode" />
+        <result column="categoryName" jdbcType="VARCHAR" property="categoryName" />
+        <result column="creator" jdbcType="VARCHAR" property="creator" />
+        <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="updator" jdbcType="VARCHAR" property="updator" />
+        <result column="updateTime" jdbcType="DATE" property="updateTime" />
+
+    </resultMap>
+
+    <select id="getProductCategoryAll" parameterType="com.cnzx.entities.product.ProductCategory" resultMap="resultMap" >
+		select t.* from product_category t
+	</select>
+
+    <select id="getProductCategoryById" parameterType="java.lang.String" resultMap="resultMap">
+		select t.* from product_category t where t.Id = #{Id}
+	</select>
+
+    <insert id="saveProductCategory" parameterType="com.cnzx.entities.product.ProductCategory">
+        insert into product_category (
+          id,
+          categoryCode,
+          categoryName,
+          creator,
+          createTime
+        ) values (
+          #{id,jdbcType=VARCHAR},
+          #{categoryCode,jdbcType=VARCHAR},
+          #{categoryName,jdbcType=DECIMAL},
+          #{creator,jdbcType=VARCHAR},
+          #{createTime,jdbcType=DATE}
+        )
+    </insert>
+
+    <update id="updateProductCategoryById" parameterType="com.cnzx.entities.product.ProductCategory">
+        update product_category set
+            categoryCode = #{categoryCode,jdbcType=VARCHAR},
+            categoryName = #{categoryName,jdbcType=DECIMAL},
+            updator = #{updator,jdbcType=VARCHAR},
+            updateTime = #{updateTime,jdbcType=DATE}
+          where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteProductCategoryById" parameterType="java.lang.String">
+        delete from product_category t where t.id = #{Id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,15 @@
+spring: 
+  profiles: 
+    active: 
+    - dev
+---
+server: 
+  port: 8051
+   
+spring: 
+  profiles: dev
+  application:
+    name: wxdc-gateway
+
+env:
+  devEnv

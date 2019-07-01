@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnzx.mapper.product.ProductInfoMapper">
+    <resultMap id="resultMap" type="com.cnzx.entities.product.ProductInfo">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="productCode" jdbcType="VARCHAR" property="productCode" />
+        <result column="productName" jdbcType="VARCHAR" property="productName" />
+        <result column="productPrice" jdbcType="DECIMAL" property="productPrice" />
+        <result column="productStock" jdbcType="INTEGER" property="productStock" />
+        <result column="productDecription" jdbcType="VARCHAR" property="productDecription" />
+        <result column="productIcon" jdbcType="VARCHAR" property="productIcon" />
+        <result column="productStauts" jdbcType="VARCHAR" property="productStauts" />
+        <result column="categoryCode" jdbcType="VARCHAR" property="categoryCode" />
+        <result column="creator" jdbcType="VARCHAR" property="creator" />
+        <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="updator" jdbcType="VARCHAR" property="updator" />
+        <result column="updateTime" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+
+    <select id="getProductInfoAll" parameterType="com.cnzx.entities.product.ProductInfo" resultMap="resultMap">
+		select t.* from product_info t
+        <where>
+            <if test="productCode!=null and productCode!=''">
+                AND t.productCode = #{productCode}
+            </if>
+            <if test="productName!=null and productName!=''">
+                AND t.productName like CONCAT('%',#{productName},'%')
+            </if>
+            <if test="productStauts!=null and productStauts!=''">
+                AND t.productStauts = #{productStauts}
+            </if>
+            <if test="categoryCode!=null and categoryCode!=''">
+                AND t.categoryCode = #{categoryCode}
+            </if>
+        </where>
+        order by t.id
+	</select>
+
+    <select id="getProductInfoById" parameterType="java.lang.String" resultMap="resultMap" >
+		select t.* from product_info t where t.Id = #{Id}
+	</select>
+
+    <select id="getProductByIdAndStock" parameterType="com.cnzx.dto.product.UpdateProductStockDTO" resultMap="resultMap" >
+		select t.* from product_info t where t.Id = #{id} and t.productStock >= #{productStock}
+	</select>
+
+    <update id="updateProductStockById" parameterType="com.cnzx.dto.product.UpdateProductStockDTO">
+        update product_info set productStock = productStock - #{productStock,jdbcType=INTEGER} where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+
+
+</mapper>

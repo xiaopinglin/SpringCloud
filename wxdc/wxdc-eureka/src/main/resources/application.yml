@@ -1,0 +1,15 @@
+server:
+  port: 8011 #服务端口
+
+spring:
+  application:
+    name: wxdc-eureka  #应用名称
+
+eureka:
+  instance:
+    hostname: wxdc-eureka #Eureka实例主机名称
+  client:
+    register-with-eureka: false # 当前的微服务不注册到eureka之中
+    fetch-registry: false #不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://wxdc-eureka:8011/eureka/

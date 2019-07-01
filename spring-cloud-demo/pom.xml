@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cnzx</groupId>
+	<artifactId>cnzx</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<!-- 版本控制 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<junit.version>4.12</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<lombok.version>1.16.18</lombok.version>
+	</properties>
+
+	<!-- 依赖管理 -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- SpringCloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.SR1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- SpringBoot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>1.5.9.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.0.4</version>
+			</dependency>
+			<!-- Druid数据连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.0.31</version>
+			</dependency>
+			<!-- SpringBoot -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>1.3.0</version>
+			</dependency>
+			<!-- logback -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>1.2.3</version>
+			</dependency>
+			<!-- junit 测试 -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- log4j 日志 -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<modules>
+		<module>cnzx-api</module>
+		<module>cnzx-provider-8011</module>
+		<module>cnzx-consumer-8021</module>
+		<module>cnzx-eureka-8031</module>
+		<module>cnzx-eureka-8032</module>
+		<module>cnzx-eureka-8033</module>
+		<module>cnzx-provider-8012</module>
+		<module>cnzx-provider-8013</module>
+		<module>cnzx-consumer-feign-8021</module>
+		<module>cnzx-provider-hystrix-8014</module>
+		<module>cnzx-hystrix-dashboard-8041</module>
+		<module>cnzx-zuul-gateway-8051</module>
+		<module>cnzx-config-8061</module>
+		<module>cnzx-config-client-8062</module>
+		<module>cnzx-config-eureka-806X</module>
+		<module>cnzx-config-provider-806X</module>
+	</modules>
+	
+	<build>
+		<finalName>microservicecloud</finalName>
+		<resources>
+			<resource>
+			  	<directory>src/main/resources</directory>
+			  	<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+		  	<plugin>
+		    	<groupId>org.apache.maven.plugins</groupId>
+		    	<artifactId>maven-resources-plugin</artifactId>
+		    	<configuration>
+					<delimiters>
+		       		<delimit>$</delimit>
+				</delimiters>
+		    </configuration>
+		  </plugin>
+		</plugins>
+	 </build>
+</project>

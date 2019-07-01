@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnzx.mapper.order.OrderMasterMapper">
+    <resultMap id="resultMap" type="com.cnzx.entities.order.OrderMaster">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="orderNum" jdbcType="VARCHAR" property="orderNum" />
+        <result column="orderAmount" jdbcType="DECIMAL" property="orderAmount" />
+        <result column="orderStatus" jdbcType="VARCHAR" property="orderStatus" />
+        <result column="payStatus" jdbcType="VARCHAR" property="payStatus" />
+        <result column="clientCode" jdbcType="VARCHAR" property="clientCode" />
+        <result column="clientName" jdbcType="VARCHAR" property="clientName" />
+        <result column="clientPhone" jdbcType="VARCHAR" property="clientPhone" />
+        <result column="clientAddress" jdbcType="VARCHAR" property="clientAddress" />
+        <result column="clientOpenId" jdbcType="VARCHAR" property="clientOpenId" />
+        <result column="creator" jdbcType="VARCHAR" property="creator" />
+        <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="updator" jdbcType="VARCHAR" property="updator" />
+        <result column="updateTime" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+
+    <insert id="createOrderMaster" parameterType="com.cnzx.entities.order.OrderMaster">
+        insert into order_master (
+          id,
+          orderNum,
+          orderAmount,
+          orderStatus,
+          payStatus,
+          clientCode,
+          clientName,
+          clientPhone,
+          clientAddress,
+          clientOpenId,
+          creator,
+          createTime
+        ) values (
+          #{id,jdbcType=VARCHAR},
+          #{orderNum,jdbcType=VARCHAR},
+          #{orderAmount,jdbcType=DECIMAL},
+          #{orderStatus,jdbcType=VARCHAR},
+          #{payStatus,jdbcType=VARCHAR},
+          #{clientCode,jdbcType=VARCHAR},
+          #{clientName,jdbcType=VARCHAR},
+          #{clientPhone,jdbcType=VARCHAR},
+          #{clientAddress,jdbcType=VARCHAR},
+          #{clientOpenId,jdbcType=VARCHAR},
+          #{creator,jdbcType=VARCHAR},
+          #{createTime,jdbcType=DATE}
+        )
+    </insert>
+
+</mapper>
