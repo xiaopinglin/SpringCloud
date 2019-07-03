@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: wxdc-discovery  #服务名称
+    name: wxdc-config  #服务名称
   cloud:
     config:
       server:
@@ -12,7 +12,7 @@ spring:
           username: 137708567@qq.com
           password: Lxp123456
           search-paths: wxdc-config #搜索改文件夹下的配置文件
-          basedir: E:/config/basedir #本地仓库地址
+          basedir: C:/ConfigManage/basedir #本地仓库地址
   rabbitmq:
     host: 180.76.97.214  #rabbitmq 地址
     port: 5672
