@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wxdc-workflow
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.97.5.158:3306/wxdc-workflow
+    username: root
+    password: 123456
+  main:
+    allow-bean-definition-overriding: true
+
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+      password: admin
+      first-name: admin
+    filter:
+      create: All tasks
+    metrics:
+      enabled: false
+      db-reporter-activate: false
+
