@@ -19,7 +19,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
         <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
-        <mysql.version>5.0.4</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <alibaba.druid.version>1.0.9</alibaba.druid.version>
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
